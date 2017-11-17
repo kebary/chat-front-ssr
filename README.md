@@ -36,24 +36,24 @@ $ npm run build
   - https://babeljs.io/
 - webpack
   - https://webpack.js.org/
-- standard
-  - https://standardjs.com/
-
-## framework
-- react
-  - https://facebook.github.io/react/
-- styled-components
-  - https://github.com/styled-components/styled-components
-- redux
-  - https://github.com/reactjs/redux
-- redux-saga
-  - https://github.com/redux-saga/redux-saga
 - flow
   - https://flow.org/
 - jest
   - https://facebook.github.io/jest/
 - standard
   - https://github.com/standard/standard
+
+## framework
+- react
+  - https://facebook.github.io/react/
+- react-router
+  - https://github.com/ReactTraining/react-router
+- styled-components
+  - https://github.com/styled-components/styled-components
+- redux
+  - https://github.com/reactjs/redux
+- redux-saga
+  - https://github.com/redux-saga/redux-saga
 - express
   - http://expressjs.com/
 
