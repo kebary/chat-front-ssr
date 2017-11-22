@@ -83,6 +83,9 @@
     "plugins": [],
     "ignore": [
       "src/server/public"
+    ],
+    "env": [
+      "jest"
     ]
   },
   "jest": {
