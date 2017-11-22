@@ -14,7 +14,7 @@ module.exports = {
   //出力されるファイル名
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'server/public')
   },
   devtool: 'source-map',
   resolve: {
@@ -36,7 +36,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, 'front/assets/images'),
-        to: path.join(__dirname, 'dist/images')
+        to: path.join(__dirname, 'server/public')
       }
     ]),
     new webpack.NamedModulesPlugin(),

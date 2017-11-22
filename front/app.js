@@ -2,10 +2,7 @@ import React from 'react'
 import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-// store
-import configureStore from './redux/store'
-// Routes
-import Routes from './routes'
+import { Routes, configureStore } from '../shared'
 // styles
 import './globalStyles'
 

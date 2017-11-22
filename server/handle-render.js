@@ -3,10 +3,7 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import template from './template'
-// store
-import configureStore from '../front/redux/store'
-// Routes
-import Routes from '../front/routes'
+import { Routes, configureStore } from '../shared'
 
 const context = {}
 

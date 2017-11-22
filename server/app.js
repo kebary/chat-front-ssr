@@ -7,7 +7,7 @@ const app = express()
 const port = 3000
 
 // 静的ファイル置き場の指定
-app.use('/', express.static(path.join(__dirname, '../dist')))
+app.use('/', express.static(path.join(__dirname, './public')))
 
 // This is fired every time the server side receives a request
 app.use(handleRender)

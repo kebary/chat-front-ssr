@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e200b73a144d6bcf040a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9ba4b38da4d4e621e317"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -743,66 +743,30 @@ var _reactRedux = __webpack_require__("./node_modules/react-redux/es/index.js");
 
 var _reactRouterDom = __webpack_require__("./node_modules/react-router-dom/es/index.js");
 
-var _store = __webpack_require__("./front/redux/store.js");
-
-var _store2 = _interopRequireDefault(_store);
-
-var _routes = __webpack_require__("./front/routes.js");
-
-var _routes2 = _interopRequireDefault(_routes);
+var _shared = __webpack_require__("./shared/index.js");
 
 __webpack_require__("./front/globalStyles.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Grab the state from a global variable injected into the server-generated HTML
-
-// Routes
 var preloadedState = window.__PRELOADED_STATE__;
 
 // Allow the passed state to be garbage-collected
 
 // styles
-
-// store
 delete window.__PRELOADED_STATE__;
 
-var store = (0, _store2.default)(preloadedState);
+var store = (0, _shared.configureStore)(preloadedState);
 (0, _reactDom.hydrate)(_react2.default.createElement(
   _reactRedux.Provider,
   { store: store },
   _react2.default.createElement(
     _reactRouterDom.BrowserRouter,
     null,
-    _react2.default.createElement(_routes2.default, null)
+    _react2.default.createElement(_shared.Routes, null)
   )
 ), document.getElementById('app'));
-
-/***/ }),
-
-/***/ "./front/components/pages/home/index.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__("./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function () {
-  return _react2.default.createElement(
-    'div',
-    null,
-    'home'
-  );
-};
 
 /***/ }),
 
@@ -823,167 +787,6 @@ var _styledComponents = __webpack_require__("./node_modules/styled-components/di
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 exports.default = (0, _styledComponents.injectGlobal)(_templateObject);
-
-/***/ }),
-
-/***/ "./front/redux/modules/sample.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/**
- * initialState
- */
-var initialState = {};
-
-/**
- * reducers
- */
-
-exports.default = function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  var action = arguments[1];
-
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-/***/ }),
-
-/***/ "./front/redux/reducer.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _redux = __webpack_require__("./node_modules/redux/es/index.js");
-
-var _sample = __webpack_require__("./front/redux/modules/sample.js");
-
-var _sample2 = _interopRequireDefault(_sample);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = (0, _redux.combineReducers)({
-  sample: _sample2.default
-});
-
-// reducers
-
-/***/ }),
-
-/***/ "./front/redux/saga.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _callee;
-
-var _marked = /*#__PURE__*/regeneratorRuntime.mark(_callee);
-
-function _callee() {
-  return regeneratorRuntime.wrap(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-        case "end":
-          return _context.stop();
-      }
-    }
-  }, _marked, this);
-}
-
-/***/ }),
-
-/***/ "./front/redux/store.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _redux = __webpack_require__("./node_modules/redux/es/index.js");
-
-var _reduxSaga = __webpack_require__("./node_modules/redux-saga/es/index.js");
-
-var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
-
-var _reduxLogger = __webpack_require__("./node_modules/redux-logger/dist/redux-logger.js");
-
-var _reducer = __webpack_require__("./front/redux/reducer.js");
-
-var _reducer2 = _interopRequireDefault(_reducer);
-
-var _saga = __webpack_require__("./front/redux/saga.js");
-
-var _saga2 = _interopRequireDefault(_saga);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var logger = (0, _reduxLogger.createLogger)({});
-var sagaMiddleware = (0, _reduxSaga2.default)();
-var middleware = (0, _redux.applyMiddleware)(sagaMiddleware, logger);
-
-exports.default = function (initialState) {
-  var store = (0, _redux.createStore)(_reducer2.default, initialState, middleware);
-  sagaMiddleware.run(_saga2.default);
-  // hmr
-  module.hot && module.hot.accept("./front/redux/reducer.js", function () {
-    store.replaceReducer(__webpack_require__("./front/redux/reducer.js").default);
-  });
-  return store;
-};
-
-/***/ }),
-
-/***/ "./front/routes.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__("./node_modules/react/index.js");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__("./node_modules/react-router-dom/es/index.js");
-
-var _home = __webpack_require__("./front/components/pages/home/index.js");
-
-var _home2 = _interopRequireDefault(_home);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function () {
-  return _react2.default.createElement(
-    _reactRouterDom.Switch,
-    null,
-    _react2.default.createElement(_reactRouterDom.Route, { component: _home2.default })
-  );
-};
-
-// components
 
 /***/ }),
 
@@ -43609,6 +43412,219 @@ module.exports = function(module) {
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
 
+
+/***/ }),
+
+/***/ "./shared/components/pages/home/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    'div',
+    null,
+    'home'
+  );
+};
+
+/***/ }),
+
+/***/ "./shared/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.configureStore = exports.Routes = undefined;
+
+var _routes = __webpack_require__("./shared/routes.js");
+
+var _routes2 = _interopRequireDefault(_routes);
+
+var _store = __webpack_require__("./shared/redux/store.js");
+
+var _store2 = _interopRequireDefault(_store);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.Routes = _routes2.default;
+exports.configureStore = _store2.default;
+
+/***/ }),
+
+/***/ "./shared/redux/modules/sample.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * initialState
+ */
+var initialState = {};
+
+/**
+ * reducers
+ */
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+/***/ }),
+
+/***/ "./shared/redux/reducer.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__("./node_modules/redux/es/index.js");
+
+var _sample = __webpack_require__("./shared/redux/modules/sample.js");
+
+var _sample2 = _interopRequireDefault(_sample);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _redux.combineReducers)({
+  sample: _sample2.default
+});
+
+// reducers
+
+/***/ }),
+
+/***/ "./shared/redux/saga.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _callee;
+
+var _marked = /*#__PURE__*/regeneratorRuntime.mark(_callee);
+
+function _callee() {
+  return regeneratorRuntime.wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _marked, this);
+}
+
+/***/ }),
+
+/***/ "./shared/redux/store.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__("./node_modules/redux/es/index.js");
+
+var _reduxSaga = __webpack_require__("./node_modules/redux-saga/es/index.js");
+
+var _reduxSaga2 = _interopRequireDefault(_reduxSaga);
+
+var _reduxLogger = __webpack_require__("./node_modules/redux-logger/dist/redux-logger.js");
+
+var _reducer = __webpack_require__("./shared/redux/reducer.js");
+
+var _reducer2 = _interopRequireDefault(_reducer);
+
+var _saga = __webpack_require__("./shared/redux/saga.js");
+
+var _saga2 = _interopRequireDefault(_saga);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var logger = (0, _reduxLogger.createLogger)({});
+var sagaMiddleware = (0, _reduxSaga2.default)();
+var middleware = (0, _redux.applyMiddleware)(sagaMiddleware, logger);
+
+exports.default = function (initialState) {
+  var store = (0, _redux.createStore)(_reducer2.default, initialState, middleware);
+  sagaMiddleware.run(_saga2.default);
+  // hmr
+  module.hot && module.hot.accept("./shared/redux/reducer.js", function () {
+    store.replaceReducer(__webpack_require__("./shared/redux/reducer.js").default);
+  });
+  return store;
+};
+
+/***/ }),
+
+/***/ "./shared/routes.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__("./node_modules/react-router-dom/es/index.js");
+
+var _home = __webpack_require__("./shared/components/pages/home/index.js");
+
+var _home2 = _interopRequireDefault(_home);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    _reactRouterDom.Switch,
+    null,
+    _react2.default.createElement(_reactRouterDom.Route, { component: _home2.default })
+  );
+};
+
+// components
 
 /***/ }),
 
