@@ -40,6 +40,8 @@ $ npm run build
   - https://flow.org/
 - jest
   - https://facebook.github.io/jest/
+- enzyme
+  - https://github.com/airbnb/enzyme
 - standard
   - https://github.com/standard/standard
 
