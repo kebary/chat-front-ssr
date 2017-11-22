@@ -6,8 +6,8 @@
   "scripts": {
     "start": "babel-node server/app.js",
     "build": "webpack",
-    "lint": "standard 'front/**/*.js' 'server/**/*.js'",
-    "fix": "standard --fix 'front/**/*.js' 'server/**/*.js'",
+    "lint": "standard 'front/**/*.js' 'shared/**/*.js' 'server/**/*.js'",
+    "fix": "standard --fix 'front/**/*.js' 'shared/**/*.js' 'server/**/*.js'",
     "flow": "flow",
     "test": "jest"
   },
@@ -16,7 +16,8 @@
   "devDependencies": {
     "babel-jest": "^21.2.0",
     "flow-bin": "^0.59.0",
-    "jest": "^21.2.1"
+    "jest": "^21.2.1",
+    "webpack-dev-middleware": "^1.12.0"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -76,6 +77,9 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": []
+    "plugins": [],
+    "ignore": [
+      "server/public"
+    ]
   }
 }

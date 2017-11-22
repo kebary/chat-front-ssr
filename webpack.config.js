@@ -41,5 +41,21 @@ module.exports = {
     ]),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    contentBase: path.resolve(__dirname, 'server/public'),
+    publicPath: '/',
+    port: 8000,
+    open: true,
+    inline: true,
+    clientLogLevel: 'error'
+    // proxy: {
+    //   '/api': {
+    //     target: BASE_PATH,
+    //     secure: false
+    //   }
+    // }
+  }
 };
