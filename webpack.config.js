@@ -8,13 +8,13 @@ module.exports = {
       'babel-polyfill',
       'es6-promise',
       'whatwg-fetch',
-      './front/app.js'
+      './src/front/app.js'
     ]
   },
   //出力されるファイル名
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'server/public')
+    path: path.resolve(__dirname, 'src/server/public')
   },
   devtool: 'source-map',
   resolve: {
@@ -35,8 +35,8 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.join(__dirname, 'front/assets/images'),
-        to: path.join(__dirname, 'server/public')
+        from: path.join(__dirname, 'src/front/assets/images'),
+        to: path.join(__dirname, 'src/server/public')
       }
     ]),
     new webpack.NamedModulesPlugin(),
@@ -45,7 +45,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
-    contentBase: path.resolve(__dirname, 'server/public'),
+    contentBase: path.resolve(__dirname, 'src/server/public'),
     publicPath: '/',
     port: 8000,
     open: true,

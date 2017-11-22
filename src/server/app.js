@@ -4,7 +4,7 @@ import open from 'open'
 import handleRender from './handle-render'
 import webpackMiddleware from 'webpack-dev-middleware'
 import webpack from 'webpack'
-import webpackConfig from '../webpack.config'
+import webpackConfig from '../../webpack.config'
 
 const app = express()
 const port = 3000

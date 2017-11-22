@@ -4,10 +4,10 @@
   "description": "chat",
   "main": "",
   "scripts": {
-    "start": "babel-node server/app.js",
+    "start": "babel-node src/server/app.js",
     "build": "webpack",
-    "lint": "standard 'front/**/*.js' 'shared/**/*.js' 'server/**/*.js'",
-    "fix": "standard --fix 'front/**/*.js' 'shared/**/*.js' 'server/**/*.js'",
+    "lint": "standard 'src/**/*.js'",
+    "fix": "standard --fix 'src/**/*.js'",
     "flow": "flow",
     "test": "jest"
   },
@@ -15,8 +15,11 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "babel-jest": "^21.2.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "flow-bin": "^0.59.0",
     "jest": "^21.2.1",
+    "raf": "^3.4.0",
     "webpack-dev-middleware": "^1.12.0"
   },
   "dependencies": {
@@ -79,7 +82,10 @@
     "parser": "babel-eslint",
     "plugins": [],
     "ignore": [
-      "server/public"
+      "src/server/public"
     ]
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setup.js"
   }
 }
