@@ -1,7 +1,3 @@
-import Routes from './routes'
-import configureStore from './redux/store'
-
-export {
-  Routes,
-  configureStore
-}
+export { default as Routes } from './routes'
+export { default as configureStore } from './redux/store'
+export { default as modules } from './redux/modules'

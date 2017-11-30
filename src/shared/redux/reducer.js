@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 
 // reducers
-import sample from './modules/sample'
+import authenticate from './modules/authenticate'
 
 export default combineReducers({
-  sample
+  authenticate
 })
