@@ -51,11 +51,5 @@ module.exports = {
     open: true,
     inline: true,
     clientLogLevel: 'error'
-    // proxy: {
-    //   '/api': {
-    //     target: BASE_PATH,
-    //     secure: false
-    //   }
-    // }
   }
 };
