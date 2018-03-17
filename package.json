@@ -11,7 +11,8 @@
     "flow": "flow",
     "test": "jest",
     "screenshot": "node e2e/screenshot.js",
-    "diff": "node e2e/diff.js"
+    "diff": "node e2e/diff.js",
+    "api-mock": "node api-mock/app.js"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -21,6 +22,7 @@
     "enzyme-adapter-react-16": "^1.1.0",
     "flow-bin": "^0.59.0",
     "jest": "^21.2.1",
+    "json-server": "^0.12.1",
     "mz": "^2.7.0",
     "raf": "^3.4.0",
     "resemblejs": "^2.10.0",
